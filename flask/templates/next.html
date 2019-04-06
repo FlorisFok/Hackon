@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="static/css/imgareaselect-default.css"
+    />
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <script type="text/javascript" src="static/scripts/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="static/scripts/jquery.imgareaselect.pack.js"
+    ></script>
+  </head>
+
+  <body>
+    <div>
+      <img
+        style="border-style: solid; border-color: orange; border-width: 10px;"
+        id="oik"
+        src="{{ img }}"
+      />
+      <!-- Deze form is onzichtbaar en wordt gevuld met de waardes van de selectie on submit -->
+      <form id="ajax" method="post">
+        <input type="hidden" name="x1" id="x1" value="" />
+        <input type="hidden" name="y1" id="y1" value="" />
+        <input type="hidden" name="x2" id="x2" value="" />
+		<input type="hidden" name="y2" id="y2" value="" />
+        <input type="hidden" name="imgsrc" id="imgsrc" value="{{ img }}" />		
+        <input type="submit" name="submit" value="Submit" class="submitbtn" />
+      </form>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $("#oik").imgAreaSelect({
+          handles: true,
+          movable: true,
+		  resizable: true,
+          // Hier worden de coordinaten aan de onzichtbare form boven meegegeven
+          onSelectEnd: function(img, selection) {
+            $('input[name="x1"]').val(selection.x1);
+            $('input[name="y1"]').val(selection.y1);
+            $('input[name="x2"]').val(selection.x2);
+            $('input[name="y2"]').val(selection.y2);
+          }
+        });
+      });
+	</script>
+	
+	<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		document.querySelector("#ajax").onsubmit = function() {
+			let coord1 = document.querySelector("#x1").value;
+			let coord2 = document.querySelector("#y1").value;
+			let coord3 = document.querySelector("#x2").value;
+			let coord4 = document.querySelector("#y2").value;
+			let imgsrc = document.querySelector("#imgsrc").value;
+			// set up ajax request
+			const request = new XMLHttpRequest();
+			request.open('POST', '/image');
+
+			// if data is recieved, check the awnser
+			request.onload = () => {
+				const data = JSON.parse(request.responseText);
+
+				if (data.success) {
+				console.log('true')
+				}
+				else {
+				console.log('false')
+				}
+			}
+
+			// send AJAX with data
+			const data = new FormData();
+			data.append('x1', coord1);
+			data.append('y1', coord2);
+			data.append('x2', coord3);
+			data.append('y2', coord4);
+			data.append('imgsrc', imgsrc);
+			request.send(data);
+			// reject autoload
+			return false;
+		}
+	});
+	</script>
+  </body>
+</html>
