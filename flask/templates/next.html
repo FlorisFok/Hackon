@@ -113,11 +113,11 @@
 			data.append('imgsrc', imgsrc);
 			request.send(data);
 			// reject autoload
-      let divy = document.createElement("div");
-      divy.class = 'boxie'
+			let divy = document.createElement("div");
+			divy.class = 'boxie'
 
-      divy.style = `top: ${(parseInt(coord2))}px; left:${(parseInt(coord1))}px ;padding-top: ${parseInt(coord4) - parseInt(coord2)}px; padding-left: ${parseInt(coord3) - parseInt(coord1)}px;position: absolute;z-index: 1;border-width: 5px;border-style: solid;border-color: yellow;`;
-      document.querySelector("#image").appendChild(divy)
+			divy.style = `top: ${(parseInt(coord2))}px; left:${(parseInt(coord1))}px ;padding-top: ${parseInt(coord4) - parseInt(coord2)}px; padding-left: ${parseInt(coord3) - parseInt(coord1)}px;position: absolute;z-index: 1;border-width: 5px;border-style: solid;border-color: yellow;`;
+			document.querySelector(".underImage").appendChild(divy)
 			return false;
 		}
 	});
