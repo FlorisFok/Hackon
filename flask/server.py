@@ -2,18 +2,30 @@ import os
 from flask import request
 from flask import render_template
 from flask import Flask
+from flask import session
 from werkzeug.utils import secure_filename
 from PIL import Image as PImage
 import pytesseract
 from pdf2image import convert_from_path, convert_from_bytes
 from PyPDF2 import PdfFileWriter, PdfFileReader
+from strgen import StringGenerator as SG
 from flask import jsonify
+import random
+import string
 import io
 import sys
 import re
 
 filepath = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
+
+@app.after_request
+def after_request(response):
+   response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+   response.headers["Expires"] = 0
+   response.headers["Pragma"] = "no-cache"
+   return response
 
 def convert_pdf(filename, output_path, pagenumber):
     input_file = 'diditwork'
@@ -66,14 +78,12 @@ def pos_neg_calc(list):
     last = list[-1]
     if last:
         l = last.replace(',', '').replace(' ', '').replace('.', '')
-        if ("(" in f and ")" in f) or "-" in f:
+        if ("(" in l and ")" in l) or "-" in l:
             l = l.replace('(', '').replace(')', '').replace('-', '')
             display_dict['totalparsed'] = -int(l)
         else:
             display_dict['totalparsed'] = int(l)
     return display_dict
-
-
 
 def read_image(filename, point=False):
     im = PImage.open(filename)
@@ -93,6 +103,10 @@ def read_image(filename, point=False):
 def hello():
     return render_template('layout.html')
 
+# def pagechecker():
+#     reader = PyPDF2.PdfFileReader(open(session["path"]))
+#     print (reader.getNumPages())
+
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
@@ -103,11 +117,28 @@ def upload_file():
         else:
             pagenumber = int(pagenumber)
         pagenumber -= 1
-        filename = secure_filename(f.filename)
+        filename = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(12)).join(".png")
         path = os.path.join(os.path.join(filepath, 'uploads'), filename)
+        session["path"] = path
         f.save(path)
-        filen = convert_pdf(path, "./static", pagenumber)
-        return render_template('next.html', img=filen)
+        filen = convert_pdf(path, "./static/pngs", pagenumber)
+        pagenumber += 1
+        return render_template('next.html', img=filen, filename=filename, pagenumber=pagenumber)
+
+@app.route('/page', methods=['GET', 'POST'])
+def next_page():
+    if request.method == 'POST':
+        f = request.form['filename']
+        pagenumber = request.form['pagenum']
+        if not pagenumber:
+            pagenumber = 1
+        else:
+            pagenumber = int(pagenumber)
+        filename = f
+        path = os.path.join(os.path.join(filepath, 'uploads'), filename)
+        filen = convert_pdf(path, "./static/pngs", pagenumber)
+        pagenumber += 1
+        return render_template('next.html', img=filen, filename=filename, pagenumber=pagenumber)
 
 @app.route("/image", methods=["POST"])
 def check():
