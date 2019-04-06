@@ -93,10 +93,6 @@ html {
 	float: left;
 }
 
-#data {
-	color: white;
-}
-
 .resultblock {
     width: 313px;
 	min-height: 200px;
@@ -107,7 +103,7 @@ html {
 }
 
 .resultblock ul {
-	list-style-type: square;
+	list-style-type: square !important;
 }
 
 body {
@@ -117,7 +113,7 @@ body {
 }
 .sums {
     font-weight: 600;
-	background-color: #ffe600;
+	background-color: #ffe600 !important;
 }
 #logo {
 	width: 3%;
