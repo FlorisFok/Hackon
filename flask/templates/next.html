@@ -5,7 +5,8 @@
       rel="stylesheet"
       type="text/css"
       href="static/css/imgareaselect-default.css"
-    />
+		/>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="static/css/style.css" />
     <script type="text/javascript" src="static/scripts/jquery.min.js"></script>
     <script
@@ -17,30 +18,41 @@
   </head>
 
   <body>
+			<div class="upperbar">
+				</div>
 	  <div>
-		<img src="static/img/eylogo.png" id="logo" />
-	  </div>
-    <div id="container">
-		<div id="image">
-      <img
-        id="oik"
-        src="{{ img }}"
-	  />
-		</div>
-	<div id="form">
-      <!-- Deze form is onzichtbaar en wordt gevuld met de waardes van de selectie on submit -->
-      <form id="ajax" method="post">
-        <input type="hidden" name="x1" id="x1" value="" />
-        <input type="hidden" name="y1" id="y1" value="" />
-        <input type="hidden" name="x2" id="x2" value="" />
-		<input type="hidden" name="y2" id="y2" value="" />
-        <input type="hidden" name="imgsrc" id="imgsrc" value="{{ img }}" />		
-        <input type="submit" name="submit" value="Submit" class="submitbtn" />
-	  </form>
-	  <div id="data">
-
-	  </div>
-	</div>
+		<!-- <img src="static/img/eylogo.png" id="logo" />
+	  </div> -->
+    <div class="container">
+				<div class="row">
+					<div class=".col-12 .col-sm-6 .col-md-8">
+						<div class="balk">
+							<form id="back" method="post">
+								<input type="submit" value="<<<" />
+							</form>
+							<form id="forward" method="post">
+								<input type="submit" value=">>>" />
+							</form>
+						</div>
+						<img id="oik" src="{{ img }}" />
+					</div>
+					<div class=".col-6 .col-md-4">
+						<div class="resultblock">
+							<h3 style="color: white; font-weight: 600;">Result</h3>
+							<p id="data" class="sum">3,233,456,-</p>
+						</div>
+						<!-- Deze form is onzichtbaar en wordt gevuld met de waardes van de selectie on submit -->
+						<form id="ajax" method="post">
+								<input type="hidden" name="x1" id="x1" value="" />
+								<input type="hidden" name="y1" id="y1" value="" />
+								<input type="hidden" name="x2" id="x2" value="" />
+								<input type="hidden" name="y2" id="y2" value="" />
+								<input type="hidden" name="imgsrc" id="imgsrc" value="{{ img }}" />
+								<input type="submit" name="submit" value="Submit" class="submitbtn" />
+						</form>
+					</div>
+				</div>
+			</div>
     <script>
       $(document).ready(function() {
         $("#oik").imgAreaSelect({
@@ -58,7 +70,7 @@
         });
       });
 	</script>
-	
+
 	<script>
 	document.addEventListener('DOMContentLoaded', () => {
 		document.querySelector("#ajax").onsubmit = function() {
