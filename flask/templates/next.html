@@ -29,12 +29,12 @@
 						<div class="balk">
 							<form id="back" action="/page" method="post">
 								<input type="hidden" name="filename" value="{{ filename }}" class="btnfile">
-								<input type="hidden" class="pag" name="pagenum" value="{{ prevnumber }}" required>							
+								<input type="hidden" class="pag" name="pagenum" value="{{ prevnumber }}" required>
 								<input type="submit" value="<<<" />
 							</form>
 							<form id="forward" action="/page" method="post">
 								<input type="hidden" name="filename" value="{{ filename }}" class="btnfile">
-								<input type="hidden" class="pag" name="pagenum" value="{{ nextnumber }}" required>	
+								<input type="hidden" class="pag" name="pagenum" value="{{ nextnumber }}" required>
 								<input type="submit" value=">>>" />
 							</form>
 						</div>
@@ -120,7 +120,7 @@
 			let divy = document.createElement("div");
 			divy.class = 'boxie'
 
-			divy.style = `top: ${(parseInt(coord2))}px; left:${(parseInt(coord1))}px ;padding-top: ${parseInt(coord4) - parseInt(coord2)}px; padding-left: ${parseInt(coord3) - parseInt(coord1)}px;position: absolute;z-index: 1;border-width: 5px;border-style: solid;border-color: yellow;`;
+			divy.style = `top: ${(parseInt(coord2)+35)}px; left:${(parseInt(coord1))}px ;padding-top: ${parseInt(coord4) - parseInt(coord2)-5}px; padding-left: ${parseInt(coord3) - parseInt(coord1)-5}px;position: absolute;z-index: 1;border-width: 5px;border-style: solid;border-color: yellow;`;
 			document.querySelector(".underImage").appendChild(divy)
 			return false;
 		}
