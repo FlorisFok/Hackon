@@ -34,7 +34,7 @@ html {
 
 .underImage {
   position: relative;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
 .resultblock {
@@ -68,6 +68,7 @@ html {
 
 #oik {
 	width: 100%;
+	/* z-index: -10; */
 }
 
 #image {
