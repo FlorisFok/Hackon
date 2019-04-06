@@ -65,7 +65,7 @@ def pos_neg_calc(list):
     if last:
         l = last.replace(',', '').replace(' ', '').replace('.', '')
         if ("(" in f and ")" in f) or "-" in f:
-            l = l.replace('(', '').replace(')', '').replace('-', '')       
+            l = l.replace('(', '').replace(')', '').replace('-', '')
             display_dict['totalparsed'] = -int(l)
         else:
             display_dict['totalparsed'] = int(l)
@@ -140,7 +140,7 @@ def upload_file():
             pagenumber = int(pagenumber)
         pagenumber -= 1
         filename = secure_filename(f.filename)
-        path = os.path.join('/Users/oscar/Development/EY-hackathon/Hackon/flask/uploads', filename)
+        path = os.path.join('/home/canelaguila/Downloads/', filename)
         f.save(path)
         filen = convert_pdf(path, "./static", pagenumber)
         return render_template('next.html', img=filen)
@@ -156,7 +156,7 @@ def check():
         print(x1, " ", y1, " ", x2, " ", y2, " ", filename)
         area = (int(x1) * 2, int(y1) * 2, int(x2) * 2, int(y2) * 2)
         image = crop_image(filename, area)
-        path = os.path.join('/Users/oscar/Development/EY-hackathon/Hackon/flask/uploads', "out.png")
+        path = os.path.join('/home/canelaguila/Downloads/', "out.png")
         image.save(path, "PNG")
         display_dict = read_image(path)
         return jsonify(display_dict)
