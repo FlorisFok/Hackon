@@ -57,6 +57,18 @@ html {
 	margin: 8px;
 }
 
+.row {
+	display: flex;
+}
+
+.mycol1 {
+	flex-grow: 7;
+}
+
+.mycol2 {
+	flex-grow: 2;
+}
+
 .btnfile {
 	background-color: white;
 	color: #333333;
@@ -84,8 +96,8 @@ html {
 }
 
 .resultblock {
-    width: 350px;
-    height: 200px;
+    width: 313px;
+    min-height: 200px;
     background-color: #333333;
     padding: 16px;
     border: none;
