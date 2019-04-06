@@ -6,11 +6,7 @@
       type="text/css"
       href="css/imgareaselect-default.css"
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="style.css"
-    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script
       type="text/javascript"
@@ -20,7 +16,11 @@
 
   <body>
     <div>
-      <img style="border-style: solid; border-color: orange; border-width: 10px;" id="oik" src="img/ex1.png" />
+      <img
+        style="border-style: solid; border-color: orange; border-width: 10px;"
+        id="oik"
+        src="img/ex1.png"
+      />
       <!-- Deze form is onzichtbaar en wordt gevuld met de waardes van de selectie on submit -->
       <form onsubmit="logresult()" method="post">
         <input type="hidden" name="x1" id="eerstex" value="" />
@@ -47,17 +47,8 @@
       });
 
       function logresult() {
-          console.log('done');
+        console.log("done");
       }
     </script>
   </body>
-
-  <style>
-    .cropper-crop {
-      display: none;
-    }
-    .cropper-bg {
-      background: none;
-    }
-  </style>
 </html>
