@@ -1,8 +1,9 @@
 .submitbtn {
     border: none;
     background-color: #999999; /* Green */
-    color: black;
-    padding: 15px 32px;
+	color: #333333;
+	font-weight: 600;
+    padding: 12px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -15,18 +16,18 @@ html {
 
 .balk {
     height: 35px;
-    background-color: #333333;
+    background-color: #ffe600;
     text-align: right;
     padding-left: 32px !important;
     border: none;
 }
 
 .balk input {
-    color: white;
+    color: #333333;
     text-align: left !important;
     font-weight: 900;
 	font-size: 24px;
-	background-color: #333333;
+	background-color: #ffe600;
 	border: none;
     padding-left: 32px !important;
 }
@@ -37,12 +38,13 @@ html {
   /* z-index: -1; */
 }
 
-.resultblock {
+/* .resultblock {
     width: 350px;
     height: 200px;
-    background-color: #333333;
+	background-color: #ffe600;
+	color: #333333;
     padding: 16px;
-}
+} */
 
 .btn {
     border: none;
@@ -97,10 +99,15 @@ html {
 
 .resultblock {
     width: 313px;
-    min-height: 200px;
-    background-color: #333333;
+	min-height: 200px;
+	background-color: gainsboro;
+	color: #333333 !important;
     padding: 16px;
     border: none;
+}
+
+.resultblock ul {
+	list-style-type: square;
 }
 
 body {
@@ -108,10 +115,9 @@ body {
 	font-family: 'Lato', sans-serif;
 	/* padding: 0 !important; */
 }
-.sum {
+.sums {
     font-weight: 600;
-    font-size: 64px;
-    color: #ffe600;
+	background-color: #ffe600;
 }
 #logo {
 	width: 3%;

@@ -42,8 +42,15 @@
 					</div>
 					<div class="mycol2">
 						<div class="resultblock">
-							<h3 style="color: white; font-weight: 600;">Result</h3>
-							<p id="data" class="sum">,-</p>
+							<h3 style=" font-weight: 600;">Result</h3>
+							<p id="data" class="sum">
+								<ul id="list">
+
+								</ul><li>252319</li>
+								<li>17642</li>
+								<p><span class="sums">Original sum: 26996 </br>
+										Calculated sum: 269961<p>
+								<p id="data" class="sum"></span></p>
 						</div>
 						<!-- Deze form is onzichtbaar en wordt gevuld met de waardes van de selectie on submit -->
 						<form id="ajax" method="post">
@@ -62,8 +69,8 @@
         $("#oik").imgAreaSelect({
           handles: true,
           movable: true,
-		  resizable: true,
-		  imageWidth: 827,
+					resizable: true,
+					imageWidth: 827,
           // Hier worden de coordinaten aan de onzichtbare form boven meegegeven
           onSelectEnd: function(img, selection) {
             $('input[name="x1"]').val(selection.x1);
@@ -94,14 +101,13 @@
 				if (data.success) {
 					console.log('true');
 					document.getElementById("data").innerHTML = "";
-					document.getElementById("data").innerHTML += "<h3>Records:</h3>";
 					document.getElementById("data").innerHTML += "<ul id=\"list\">";
 					for (i in data.records) {
 						document.getElementById("data").innerHTML += "<li>" + data.records[i] + "</li>";
 					}
-					document.getElementById("data").innerHTML += "</ul>";
-					document.getElementById("data").innerHTML += "<p>Original sum: " + data.totalparsed;
-					document.getElementById("data").innerHTML += "Calculated sum: " + data.total + "</p>";
+					document.getElementById("data").innerHTML += "</ul> <span class='sums'>";
+					document.getElementById("data").innerHTML += "Original sum: " + data.totalparsed + </br>;
+					document.getElementById("data").innerHTML += "Calculated sum: " + data.total + "</span></br>";
 				}
 				else {
 					console.log('false');
