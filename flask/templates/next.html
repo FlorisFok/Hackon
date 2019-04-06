@@ -11,16 +11,22 @@
     <script
       type="text/javascript"
       src="static/scripts/jquery.imgareaselect.pack.js"
-    ></script>
+	></script>
+	<title>EY Validator</title>
   </head>
 
   <body>
-    <div>
+	  <div>
+		<img src="static/img/eylogo.png" id="logo" />
+	  </div>
+    <div id="container">
+		<div id="image">
       <img
-        style="border-style: solid; border-color: orange; border-width: 10px;"
         id="oik"
         src="{{ img }}"
-      />
+	  />
+		</div>
+	<div id="form">
       <!-- Deze form is onzichtbaar en wordt gevuld met de waardes van de selectie on submit -->
       <form id="ajax" method="post">
         <input type="hidden" name="x1" id="x1" value="" />
@@ -29,14 +35,15 @@
 		<input type="hidden" name="y2" id="y2" value="" />
         <input type="hidden" name="imgsrc" id="imgsrc" value="{{ img }}" />		
         <input type="submit" name="submit" value="Submit" class="submitbtn" />
-      </form>
-    </div>
+	  </form>
+	</div>
     <script>
       $(document).ready(function() {
         $("#oik").imgAreaSelect({
           handles: true,
           movable: true,
 		  resizable: true,
+		  imageWidth: 827,
           // Hier worden de coordinaten aan de onzichtbare form boven meegegeven
           onSelectEnd: function(img, selection) {
             $('input[name="x1"]').val(selection.x1);
@@ -65,10 +72,11 @@
 				const data = JSON.parse(request.responseText);
 
 				if (data.success) {
-				console.log('true')
+					console.log('true')
+					
 				}
 				else {
-				console.log('false')
+					console.log('false')
 				}
 			}
 
