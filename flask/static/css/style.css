@@ -29,6 +29,12 @@ html {
     padding-left: 32px !important;
 }
 
+
+.underImage {
+  position: relative;
+  z-index: -1;
+}
+
 .resultblock {
     width: 350px;
     height: 200px;
