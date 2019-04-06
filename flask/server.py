@@ -123,7 +123,10 @@ def upload_file():
         f.save(path)
         filen = convert_pdf(path, "./static/pngs", pagenumber)
         pagenumber += 1
-        return render_template('next.html', img=filen, filename=filename, pagenumber=pagenumber)
+        prevnumber = pagenumber - 2
+        if (prevnumber < 0):
+            prevnumber = 0
+        return render_template('next.html', img=filen, filename=filename, nextnumber=pagenumber, prevnumber=prevnumber)
 
 @app.route('/page', methods=['GET', 'POST'])
 def next_page():
@@ -138,7 +141,10 @@ def next_page():
         path = os.path.join(os.path.join(filepath, 'uploads'), filename)
         filen = convert_pdf(path, "./static/pngs", pagenumber)
         pagenumber += 1
-        return render_template('next.html', img=filen, filename=filename, pagenumber=pagenumber)
+        prevnumber = pagenumber - 2
+        if (prevnumber < 0):
+            prevnumber = 0
+        return render_template('next.html', img=filen, filename=filename, nextnumber=pagenumber, prevnumber=prevnumber)
 
 @app.route("/image", methods=["POST"])
 def check():
