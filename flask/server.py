@@ -4,6 +4,7 @@ from flask import render_template
 from flask import Flask
 from werkzeug.utils import secure_filename
 from PIL import Image as PImage
+import pytesseract
 from pdf2image import convert_from_path, convert_from_bytes
 from PyPDF2 import PdfFileWriter, PdfFileReader
 from flask import jsonify
@@ -17,7 +18,7 @@ def convert_pdf(filename, output_path):
     print("Done")
 
     inp = PdfFileReader(filename, "rb")
-    page = inp.getPage(0)
+    page = inp.getPage(7)
 
     wrt = PdfFileWriter()
     wrt.addPage(page)
@@ -65,6 +66,30 @@ def crop_image(filename, area = (400, 400, 800, 800)):
 #             img.save(filename=image_filename)
 #             return (image_filename)
 
+
+
+def read_image(filename):
+    im = PImage.open(filename)
+    text = pytesseract.image_to_string(im, lang = 'eng')
+    data = text.split("\n")
+    total = 0
+    print(text)
+    print("---------- PARSED DATA ----------")
+
+    for d in data[:-2]:
+        euro = float(d.replace(',', '').replace(' ', ''))
+        total += euro
+        print(euro)
+    print("-------------- +")
+    totalpic = float(data[-1].replace(',', '').replace(' ', ''))
+    print("Parsed total:		", totalpic)
+    print("Calculated total:	", total)
+
+    if (total == totalpic):
+        print("Correct!")
+    else:
+        print("Incorrect!")
+
 @app.route('/')
 def hello():
     return render_template('layout.html')
@@ -92,6 +117,7 @@ def check():
         image = crop_image(filename, area)
         path = os.path.join('/Users/oscar/Development/EY-hackathon/Hackon/flask/uploads', "out.png")
         image.save(path, "PNG")
+        read_image(path)
         return jsonify({"success": True})
     else:
         return jsonify({"success": False})
