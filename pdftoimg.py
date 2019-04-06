@@ -1,6 +1,7 @@
 import os
 from wand.image import Image
 from wand.color import Color
+import sys
 
 def convert_pdf(filename, output_path, resolution=300):
     """ Convert a PDF into images.
@@ -24,4 +25,5 @@ def convert_pdf(filename, output_path, resolution=300):
 
             img.save(filename=image_filename)
 
-convert_pdf("./zen.pdf", "./")
+file = sys.argv[1]
+convert_pdf(file, "./")
