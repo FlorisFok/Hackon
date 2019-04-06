@@ -12,7 +12,7 @@ import io
 import sys
 import re
 
-
+filepath = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)
 
 def convert_pdf(filename, output_path, pagenumber):
@@ -78,24 +78,6 @@ def pos_neg_calc(list):
 def read_image(filename, point=False):
     im = PImage.open(filename)
     text = pytesseract.image_to_string(im, lang = 'eng')
-
-    # digits = []
-    # if len(numbers) > 0:
-    #     if point:
-    #         for num in numbers[:-1]:
-    #             try:
-    #                 total += float(num[0])+float(num[1])*0.1
-    #             except:
-    #                 total += float(num[0])
-    #     else:
-    #         for num in numbers[:-1]:
-    #             number = ''
-    #             for s in num:
-    #                 number += s
-    #             total += int(number)
-    #             digits.append(int(number))
-            # for s in numbers[-1]:
-            #     totalpic += s
     display_dict = pos_neg_calc(text.split('\n'))
     print(text)
     print("---------- PARSED DATA ----------")
@@ -105,28 +87,6 @@ def read_image(filename, point=False):
     print("Parsed total:		", display_dict['totalparsed'])
     print("Calculated total:	", display_dict['total'])
     print("-----------------------------------")
-    print("Posneg:")
-    print()
-    # data = text.split("\n")
-    # total = 0
-    # print(text)
-    # print("---------- PARSED DATA ----------")
-
-    # for d in data[:-2]:
-    #     euro = float(d.replace(',', '').replace(' ', ''))
-    #     total += euro
-    #     print(euro)
-    # print("-------------- +")
-    # totalpic = float(data[-1].replace(',', '').replace(' ', ''))
-    # print("Parsed total:		", totalpic)
-    # print("Calculated total:	", total)
-
-    # if (total == totalpic):
-    #     print("Correct!")
-    # elif ((total - 1) == totalpic or (total + 1) == totalpic):
-	#     print("Rounding error!")
-    # else:
-    #     print("Incorrect!")
     return display_dict
 
 @app.route('/')
@@ -144,7 +104,7 @@ def upload_file():
             pagenumber = int(pagenumber)
         pagenumber -= 1
         filename = secure_filename(f.filename)
-        path = os.path.join('/Users/oscar/Development/EY-hackathon/Hackon/flask/uploads', filename)
+        path = os.path.join(os.path.join(filepath, 'uploads'), filename)
         f.save(path)
         filen = convert_pdf(path, "./static", pagenumber)
         return render_template('next.html', img=filen)
@@ -160,7 +120,7 @@ def check():
         print(x1, " ", y1, " ", x2, " ", y2, " ", filename)
         area = (int(x1) * 2, int(y1) * 2, int(x2) * 2, int(y2) * 2)
         image = crop_image(filename, area)
-        path = os.path.join('/Users/oscar/Development/EY-hackathon/Hackon/flask/uploads', "out.png")
+        path = os.path.join(os.path.join(filepath, 'uploads'), "out.png")
         image.save(path, "PNG")
         display_dict = read_image(path)
         return jsonify(display_dict)
