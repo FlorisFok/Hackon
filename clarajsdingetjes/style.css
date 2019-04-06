@@ -1,10 +1,80 @@
 .submitbtn {
     border: none;
-    background-color: orange; /* Green */
-    color: grey;
+    background-color: #333333; /* Green */
+    color: white;
+    padding: 8px 16px !important;
+    text-align: center;
+    height: 46px;
+    margin: 0 auto;
+    margin-left: 16px;
+    float: right;
+    margin-top: 8px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 8px;
+    font-weight: 600;
+}
+
+.btn {
+    border: none;
+    background-color: #333333; /* Green */
+    color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    font-weight: 600;
+}
+
+.background {
+    background-color: #ffe600;
+}
+
+.container {
+    margin-top:32px;
+}
+
+h1 {
+    margin: 8px;
+    margin-left: 48px;
+    font-weight: 900;
+    font-size: 64px;
+}
+
+.resultblock {
+    width: 350px;
+    height: 200px;
+    background-color: #333333;
+    padding: 16px;
+    border: none;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    padding-top: 16px;
+    padding-bottom: 64px;
+}
+
+.balk {
+    height: 24px;
+    background-color: #333333;
+    text-align: right;
+    padding-left: 32px !important;
+    border: none;
+}
+
+.balk a {
+    color: white;
+    text-align: left !important;
+    font-weight: 900;
+    font-size: 24px;
+    padding-left: 32px !important;
+}
+
+.sum {
+    font-weight: 600;
+    font-size: 64px;
+    color: #ffe600;
 }

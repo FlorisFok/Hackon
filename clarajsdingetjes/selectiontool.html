@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/imgareaselect-default.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="scripts/jquery.imgareaselect.pack.js"
+    ></script>
+  </head>
+
+  <body>
+    <div>
+      <img
+        style="border-style: solid; border-color: orange; border-width: 10px;"
+        id="oik"
+        src="img/ex1.png"
+      />
+      <!-- Deze form is onzichtbaar en wordt gevuld met de waardes van de selectie on submit -->
+      <form onsubmit="logresult()" method="post">
+        <input type="hidden" name="x1" id="eerstex" value="" />
+        <input type="hidden" name="y1" value="" />
+        <input type="hidden" name="x2" id="tweedex" value="" />
+        <input type="hidden" name="y2" value="" />
+        <input type="submit" name="submit" value="Submit" class="submitbtn" />
+      </form>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $("#oik").imgAreaSelect({
+          handles: true,
+          movable: true,
+          resizable: true,
+          // Hier worden de coordinaten aan de onzichtbare form boven meegegeven
+          onSelectEnd: function(img, selection) {
+            $('input[name="x1"]').val(selection.x1);
+            $('input[name="y1"]').val(selection.y1);
+            $('input[name="x2"]').val(selection.x2);
+            $('input[name="y2"]').val(selection.y2);
+          }
+        });
+      });
+
+      function logresult() {
+        console.log("done");
+      }
+    </script>
+  </body>
+</html>
