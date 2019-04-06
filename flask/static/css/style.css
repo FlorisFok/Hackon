@@ -13,6 +13,37 @@ html {
 	padding: 0 !important;
 }
 
+.balk {
+    height: 35px;
+    background-color: #333333;
+    text-align: right;
+    padding-left: 32px !important;
+    border: none;
+}
+
+.balk input {
+    color: white;
+    text-align: left !important;
+    font-weight: 900;
+	font-size: 24px;
+	background-color: #333333;
+	border: none;
+    padding-left: 32px !important;
+}
+
+
+.underImage {
+  position: relative;
+  z-index: -1;
+}
+
+.resultblock {
+    width: 350px;
+    height: 200px;
+    background-color: #333333;
+    padding: 16px;
+}
+
 .btn {
     border: none;
     background-color: #ffe600;
@@ -36,7 +67,7 @@ html {
 }
 
 #oik {
-	width: 827px;
+	width: 100%;
 }
 
 #image {
@@ -51,25 +82,38 @@ html {
 	color: white;
 }
 
+.resultblock {
+    width: 350px;
+    height: 200px;
+    background-color: #333333;
+    padding: 16px;
+    border: none;
+}
+
 body {
 	background: #333333;
 	font-family: 'Lato', sans-serif;
+	/* padding: 0 !important; */
 }
-
+.sum {
+    font-weight: 600;
+    font-size: 64px;
+    color: #ffe600;
+}
 #logo {
-	width: 7%;
+	width: 3%;
 	padding: 7px;
 	padding-left: 0px
 }
 
-#oik {
+/* #oik {
 	border-style: solid;
 	border-color: white;
 	border-width: 1px;
-}
+} */
 
 .pag {
-	width: 32px;
+	width: 64px;
 	text-align:center;
 }
 
@@ -81,14 +125,25 @@ body {
 	color: #333333;
 }
 
-.container {
-    margin-top:32px;
+/* .container {
+	margin-top:32px;
+
+} */
+
+form#back {
+	display: inline-block;
 }
+
+form#forward {
+	display: inline-block;
+}
+
 
 .firstpage {
 	text-align: center;
 	color: white !important;
 }
+
 
 h1 {
 	margin: 64px;
