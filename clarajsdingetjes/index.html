@@ -21,6 +21,7 @@
   <body>
     <div>
       <img style="border-style: solid; border-color: orange; border-width: 10px;" id="oik" src="img/ex1.png" />
+      <!-- Deze form is onzichtbaar en wordt gevuld met de waardes van de selectie on submit -->
       <form onsubmit="logresult()" method="post">
         <input type="hidden" name="x1" id="eerstex" value="" />
         <input type="hidden" name="y1" value="" />
@@ -35,6 +36,7 @@
           handles: true,
           movable: true,
           resizable: true,
+          // Hier worden de coordinaten aan de onzichtbare form boven meegegeven
           onSelectEnd: function(img, selection) {
             $('input[name="x1"]').val(selection.x1);
             $('input[name="y1"]').val(selection.y1);
