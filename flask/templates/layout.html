@@ -4,43 +4,26 @@
    <meta charset="utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>- My Flask Application</title>
-   <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
-   <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+   <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
    <script src="/static/scripts/modernizr-2.6.2.js"></script>
    <title>EY Validator</title>
 </head>
 
 <body>
-   <div class="navbar navbar-inverse navbar-fixed-top">
-       <div class="container">
-           <div class="navbar-header">
-               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-               </button>
-               <a href="/" class="navbar-brand">Application name</a>
-           </div>
-           <div class="navbar-collapse collapse">
-               <ul class="nav navbar-nav">
-                   <li><a href="{{ url_for('upload_file') }}">Home</a></li>
-               </ul>
-           </div>
-       </div>
-   </div>
+    <div class="upperbar">
+    </div>
 
-   <div class="container body-content">
-	<form action="/upload" method="post" enctype=multipart/form-data>
-		Select image to upload:
-		<input type="file" name="the_file" required>
-		<input type="number" name="pagenum" value="1" required>
-		<input type="submit" value="Upload Image" name="submit">
-	 </form>
-       <hr />
-       <footer>
-           <p>&copy; - My Flask Application</p>
-       </footer>
-   </div>
+    <div class="container firstpage">
+        <h1>EY Validator</h1>
+        <h3>Check the numbers!</h3>
+        <form action="/upload" method="post" enctype=multipart/form-data>
+            Select image to upload:
+            <input type="file" name="the_file" value="Choose File" class="btn"required>
+            <input type="number" name="pagenum" value="1" required>
+            <input type="submit" value="Upload Image" name="submit">
+        </form>
+    </div>
 
    <script src="/static/scripts/jquery-1.10.2.js"></script>
    <script src="/static/scripts/bootstrap.js"></script>

@@ -9,9 +9,20 @@
     font-size: 22px;
 }
 
-#container {
-	width: 100%;
+html {
+	padding: 0 !important;
+}
 
+.btn {
+    border: none;
+    background-color: #ffe600;
+    color: #333333;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 #oik {
@@ -32,7 +43,7 @@
 
 body {
 	background: #333333;
-	padding-left: 7px;
+	font-family: 'Lato', sans-serif;
 }
 
 #logo {
@@ -42,7 +53,24 @@ body {
 }
 
 #oik {
-	border-style: solid; 
-	border-color: white; 
+	border-style: solid;
+	border-color: white;
 	border-width: 1px;
+}
+
+.upperbar {
+	background-color: #ffe600;
+	height: 16px;
+	width: 100%;
+	margin-bottom: 16px;
+	color: #333333;
+}
+
+.container {
+    margin-top:32px;
+}
+
+.firstpage {
+	text-align: center;
+	color: white !important;
 }

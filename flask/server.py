@@ -67,7 +67,7 @@ def pos_neg_calc(list):
     if last:
         l = last.replace(',', '').replace(' ', '').replace('.', '')
         if ("(" in f and ")" in f) or "-" in f:
-            l = l.replace('(', '').replace(')', '').replace('-', '')       
+            l = l.replace('(', '').replace(')', '').replace('-', '')
             display_dict['totalparsed'] = -int(l)
         else:
             display_dict['totalparsed'] = int(l)
