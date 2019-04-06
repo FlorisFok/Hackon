@@ -3,8 +3,16 @@
   <head>
     <link
       rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
       type="text/css"
       href="css/imgareaselect-default.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900"
+      rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
@@ -12,24 +20,51 @@
       type="text/javascript"
       src="scripts/jquery.imgareaselect.pack.js"
     ></script>
+    <title>EY Validator</title>
   </head>
 
-  <body>
-    <div>
-      <img
-        style="border-style: solid; border-color: orange; border-width: 10px;"
-        id="oik"
-        src="img/ex1.png"
-      />
-      <!-- Deze form is onzichtbaar en wordt gevuld met de waardes van de selectie on submit -->
-      <form onsubmit="logresult()" method="post">
-        <input type="hidden" name="x1" id="eerstex" value="" />
-        <input type="hidden" name="y1" value="" />
-        <input type="hidden" name="x2" id="tweedex" value="" />
-        <input type="hidden" name="y2" value="" />
-        <input type="submit" name="submit" value="Submit" class="submitbtn" />
-      </form>
+  <body class="background">
+    <div class="row">
+      <div class="col-6 .col-md-4">
+          <h1>
+              EY
+              <span style="color: white; background-color: #333333;">>></span>
+              VALIDATOR
+            </h1>
+      </div>
+
+      <button class="submitbtn">UPLOAD NEW FILE</button>
     </div>
+    <div class="container">
+      <div class="row">
+        <div class=".col-12 .col-sm-6 .col-md-8">
+          <div class="balk">
+            <a href="#"><<<   </a>
+            <a href="#">   >>>  <span style="color: #333333">.</span></a>
+          </div>
+          <img
+            style="border-style: solid; border-color: #333333; border-width: 10px;"
+            id="oik"
+            src="img/ex1.png"
+          />
+        </div>
+        <div class=".col-6 .col-md-4">
+          <div class="resultblock">
+            <h3 style="color: white; font-weight: 600;">Result</h3>
+            <p class="sum">3,233,456,-</p>
+          </div>
+          <!-- Deze form is onzichtbaar en wordt gevuld met de waardes van de selectie on submit -->
+          <form onsubmit="logresult()" method="post">
+            <input type="hidden" name="x1" id="eerstex" value="" />
+            <input type="hidden" name="y1" value="" />
+            <input type="hidden" name="x2" id="tweedex" value="" />
+            <input type="hidden" name="y2" value="" />
+            <input type="submit" name="submit" value="CHECK" class="btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+
     <script>
       $(document).ready(function() {
         $("#oik").imgAreaSelect({
