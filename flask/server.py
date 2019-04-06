@@ -11,6 +11,8 @@ from flask import jsonify
 import io
 import sys
 import re
+
+
 app = Flask(__name__)
 
 def convert_pdf(filename, output_path, pagenumber):
@@ -46,7 +48,7 @@ def crop_image(filename, area = (400, 400, 800, 800)):
 
 def pos_neg_calc(list):
     display_dict = {
-        'succes': True,
+        'success': True,
         'total': 0,
         'totalparsed': 0,
         'records': []
@@ -70,6 +72,8 @@ def pos_neg_calc(list):
         else:
             display_dict['totalparsed'] = int(l)
     return display_dict
+
+
 
 def read_image(filename, point=False):
     im = PImage.open(filename)
@@ -162,3 +166,5 @@ def check():
         return jsonify(display_dict)
     else:
         return jsonify({"success": False})
+
+    
