@@ -78,6 +78,7 @@
 				if (data.success) {
 					console.log('true');
 					document.getElementById("data").innerHTML = "";
+					document.getElementById("data").innerHTML += "<h3>Records:</h3>";
 					document.getElementById("data").innerHTML += "<ul id=\"list\">";
 					for (i in data.records) {
 						document.getElementById("data").innerHTML += "<li>" + data.records[i] + "</li>";
