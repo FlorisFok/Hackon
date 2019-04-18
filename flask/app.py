@@ -87,9 +87,9 @@ def pos_neg_calc(list):
 
 def read_image(filename, point=False):
     im = PImage.open(filename)
-    text = pytesseract.image_to_string(im, lang = 'eng')
-    display_dict = pos_neg_calc(text.split('\n'))
+    text = pytesseract.image_to_string(im, lang='eng')
     print(text)
+    display_dict = pos_neg_calc(text.split('\n'))
     print("---------- PARSED DATA ----------")
     for d in display_dict['records']:
         print(d)
@@ -164,4 +164,3 @@ def check():
     else:
         return jsonify({"success": False})
 
-    
